@@ -1,0 +1,87 @@
+.popup-form {
+    width: 100%;
+    display: block;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+.content-form {
+    background-color: white;
+    width: 450px;
+    height: 300px;
+    margin: 145px auto;
+    border: 2px solid;
+    border-color: #efefef;
+    border-radius: 10px;
+}
+.header-form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-items: center;
+}
+.title-form {
+    width: 400px;
+    font-size: 14px;
+    text-align: center;
+    color: #316B83;
+}
+.close{
+    cursor: pointer;
+}
+.c-input{
+    width: 300px;
+    margin: 10px auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+.label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: center;
+    font-size: 12px;
+    color: #7F7C82
+}
+.input {
+    padding: 0px 3px;
+    height: 30px;
+    border: 1px solid grey;
+    border-radius: 4px;
+}
+.input:focus {
+    outline: none;
+    border: 2px solid #94D0CC;
+}
+.content-message{
+    position: fixed;
+    top: 100px;
+    left: 70%;
+    z-index: 3;
+    width: 300px;
+    height: auto;
+}
+.message{
+    margin-top: 5px;
+    padding: 20px;
+    width: 100%;
+    border: solid 1px;
+    border-radius: 15px;
+}
+.ms-succes {
+    border-color: #26ff6a;
+    background: #26ff6a;
+}
+.ms-error {
+    border-color: #ff3b3b;
+    background: #ff3b3b; 
+}
+.ms-succes > p{
+    color: #073816; 
+}
+.ms-error > p{
+    color: #381f1f; 
+}
+.message > p{
+    text-align: center;
+}

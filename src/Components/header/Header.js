@@ -1,0 +1,14 @@
+import './header.css';
+import Menu from '../nav/Menu';
+
+function Header() {
+    return (
+      <>
+        <div className="header">
+          <h1 className="title">Todos App</h1>
+        </div>
+        <Menu/>
+      </>
+    );
+}
+export default Header;
