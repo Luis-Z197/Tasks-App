@@ -4,17 +4,17 @@ For the styling of the application no css libraries or frameworks were used.
 
 Developed by Luis Zurita
 
-preview app
+Preview app
 
 Page Home
 
 ![Image text](https://github.com/Luis-Z197/TodosApp/blob/main/docs/all.PNG)
 
-options menu
+Options menu
 
-![Image text](https://github.com/Luis-Z197/TodosApp/blob/main/docs/options%menu.PNG)
+![Image text](https://github.com/Luis-Z197/TodosApp/blob/main/docs/options%20menu.PNG)
 
-form
+Form
 
 ![Image text](https://github.com/Luis-Z197/TodosApp/blob/main/docs/Form.PNG)
 
