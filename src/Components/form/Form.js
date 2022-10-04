@@ -19,15 +19,6 @@ function Form() {
         setShow(false)
     }
 
-    const autoColosed = () => {
-        document.addEventListener("mouseup", function(event) {
-            var obj = document.getElementById("form");
-            if (!obj.contains(event.target)) {
-                closed()
-            }
-        });
-    }
-
     const setInputform = (element) => {
         let name=''
         let value=''
@@ -37,18 +28,17 @@ function Form() {
     }
 
     const guardar = () =>{
+        setTypeMessage(true)
         let newData=[]
         let dataStorage = sessionStorage.getItem('todos')
-        setTypeMessage(true)
-        if(dataStorage==null){
-            setDataForm({ ...dataForm, ['id']: 1 });
-        }
-        if(dataStorage!=null){
+        let data = dataForm
+        if(dataStorage === null){
+            data.id = 1
+        }else{
             newData=JSON.parse(dataStorage)
-            let id = newData.length+1;
-            setDataForm({ ...dataForm, ['id']: id});
+            data.id = newData.length + 1
         }
-        newData.push(dataForm);
+        newData.push(data);
         sessionStorage.setItem('todos', JSON.stringify(newData))
         getTodos()
         message("Successfully saved")
@@ -88,10 +78,10 @@ function Form() {
     
 
     return (
-        <div className="popup-form" style={{display:show===true?'block':'none'}} onChangeCapture={autoColosed}>
+        <div className="popup-form" style={{display:show===true?'block':'none'}}>
             <div className="content-message" id='content-message'>
             </div>
-            <div className="content-form" id="form">
+            <div className="content-form">
                 <div className="header-form">
                     <div className="title-form">
                         <p>{action==='save'?'Register task':'Edit task'}</p>

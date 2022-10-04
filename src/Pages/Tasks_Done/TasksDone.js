@@ -7,13 +7,14 @@ import Form from '../../Components/form/Form';
 
 function TasksDone() {
 
-    const { todos } = useContext(TodosContext)
+    const { getTodos, todos } = useContext(TodosContext)
     const [tasks_done, setTaskDone] = useState([])
     const [total_todos, setTotalTodos] = useState(0)
 
     useEffect(() => {
+        getTodos()
         setTaskDone(todos.filter(todo => todo.status===true))
-    }, [todos])
+    }, [])
 
     useEffect(() => {
         setTotalTodos(tasks_done.length)
@@ -28,6 +29,7 @@ function TasksDone() {
                 </div>
                 <List list = {tasks_done} />
             </div>
+            <Form />
         </>
     );
 }

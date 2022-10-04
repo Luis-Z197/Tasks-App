@@ -61,6 +61,7 @@ function TodosState( props) {
             type: 'GET_TODO',
             payload: todoSelected
         })
+        console.log(todoSelected)
     }
 
   return (

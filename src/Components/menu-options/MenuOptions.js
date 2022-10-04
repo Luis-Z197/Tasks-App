@@ -7,7 +7,7 @@ function MenuOptions(props) {
 
     const todo = props.todo
     const { todos, editTodo, deleteTodo, updateStatus } = useContext(TodosContext)
-    const { setShow, setAction } = useContext(FormContext)
+    const { setShow, setAction, show } = useContext(FormContext)
     const [isVisible, setIsVisible] = useState(true)
 
 
@@ -18,18 +18,8 @@ function MenuOptions(props) {
         setAction('edit')
     }
 
-    const autoColosed = () => {
-        document.addEventListener("mouseup", function (event) {
-            var obj = document.getElementById("content-options");
-            if (!obj.contains(event.target)) {
-                setIsVisible(true)
-                setAction('save')
-            }
-        });
-    }
-
     return (
-        <div className="options" onClick={autoColosed}>
+        <div className="options">
             <div className="c-icon" style={{ display: isVisible ? null : 'none' }}>
                 <a className="icon-options" onClick={() => { setIsVisible(false) }}>
                     <span className="material-icons" style={{ color: 'grey' }}>more_vert</span>
@@ -46,9 +36,13 @@ function MenuOptions(props) {
                         <div className="op-items done" onClick={() => { updateStatus(todos, todo.id) }}>
                             <span className="material-icons">{todo.status ? 'task_alt' : 'radio_button_unchecked'}</span>
                         </div>
-                        <div className="op-items edit" onClick={() => { edit() }}>
-                            <span className="material-icons">edit</span>
-                        </div>
+                        {
+                            !todo.status && (
+                                <div className="op-items edit" onClick={() => { edit() }}>
+                                    <span className="material-icons">edit</span>
+                                </div>
+                            )
+                        }
                         <div className="op-items delete" onClick={() => { deleteTodo(todos, todo.id) }}>
                             <span className="material-icons">delete</span>
                         </div>

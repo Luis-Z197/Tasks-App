@@ -7,11 +7,12 @@ import Form from '../../Components/form/Form';
 
 function PendingTasks() {
 
-    const { todos } = useContext(TodosContext)
+    const { getTodos, todos } = useContext(TodosContext)
     const [pending_tasks, setPendingTask] = useState([])
     const [total_todos, setTotalTodos] = useState(0)
 
     useEffect(() => {
+        getTodos()
         setPendingTask(todos.filter(todo => todo.status===false))
     }, [])
 
@@ -28,6 +29,7 @@ function PendingTasks() {
                 </div>
                 <List list = {pending_tasks} />
             </div>
+            <Form />
         </>
     );
 }
