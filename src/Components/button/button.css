@@ -7,16 +7,31 @@
     width: 50%;
     margin:3px;
     padding: 10px;
-    border: solid 1px black;
+    border: solid 1px;
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
     transition: all 0.3s ease 0s;
 }
 .primary {
-    background: #00838f;
+    background: white;
+    color: #151e31;
+    border-color: #151e31;
+}
+.primary:hover {
+    background: #151e31;
     color: white;
-    border-color: #005662;
+    border-color: #151e31;
+}
+.secondary {
+    background: white;
+    color: #0082f1;
+    border-color: #0082f1;
+}
+.secondary:hover {
+    background: #0082f1;
+    color: white;
+    border-color: #0082f1;
 }
 .button:active{
     transform: translateY(-2px);

@@ -1,20 +1,14 @@
 import './list.css';
 import { useState, useEffect } from 'react';
+import MenuOptions from '../menu-options/MenuOptions';
 
 function List(props) {
 
-    const lista = props.lista;
+    const list = props.list;
     const [todos, setTodos] = useState([])
-    const [isVisible, setIsVisible] = useState(true)
-
-    const deleteTodo = (id) => { 
-        console.log(todos)
-        let new_list = todos.filter((todo) => todo.id !== id)
-        setTodos(new_list)
-    }
 
     useEffect(() => {
-        setTodos(lista)
+        setTodos(list)
     })
 
     return (
@@ -28,29 +22,11 @@ function List(props) {
                             </span>
                             <div className="details">
                                 <p className="description">
-                                    {todo.descripcion}
+                                    {todo.description}
                                 </p>
                                 <p className="fecha">{todo.date}</p>
                             </div>
-                            <div className="options">
-                                <div className="c-icon" style={{ display: isVisible?null:'none'}}>
-                                    <a className="icon-options" onClick={()=> {setIsVisible(false)}}>
-                                        <span className="material-icons" style={{ color: 'grey' }}>more_vert</span>
-                                    </a>
-                                </div>
-                                <div className="content-options" style={{ display: isVisible?'none':'block'}}>
-                                    <div className='c-icon'>
-                                        <a className="icon-close" onClick={()=> {setIsVisible(true)}}>
-                                            <span className="material-icons" style={{ color: 'grey' }}>close</span>
-                                        </a>
-                                    </div>
-                                    <ul>
-                                        <li><a className="op-items">editar</a></li>
-                                        <li><a className="op-items">finalizar tarea</a></li>
-                                        <li><a className="op-items" onClick={() =>{deleteTodo(todo.id)}}>eliminar</a></li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <MenuOptions todo = {todo} />
                         </div>
                     </div>
                 ))

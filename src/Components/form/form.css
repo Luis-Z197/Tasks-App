@@ -7,26 +7,28 @@
 }
 .content-form {
     background-color: white;
-    width: 450px;
+    width: 360px;
     height: 300px;
-    margin: 145px auto;
+    margin: 140px auto;
     border: 2px solid;
     border-color: #efefef;
     border-radius: 10px;
 }
 .header-form {
+    margin-top: 10px;
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-end;
     align-items: center;
 }
 .title-form {
-    width: 400px;
+    width: 300px;
     font-size: 14px;
+    font-weight: bold;
     text-align: center;
-    color: #316B83;
+    color: #010816;
 }
-.close{
+.closeed{
     cursor: pointer;
 }
 .c-input{
@@ -41,17 +43,22 @@
     margin-bottom: 5px;
     text-align: center;
     font-size: 12px;
-    color: #7F7C82
+    color: #454346
 }
 .input {
-    padding: 0px 3px;
+    padding: 0px 10px;
     height: 30px;
     border: 1px solid grey;
     border-radius: 4px;
+    color: #202430;
 }
 .input:focus {
     outline: none;
     border: 2px solid #94D0CC;
+}
+.content-button {
+    width: 100%;
+    margin-top: 10px;
 }
 .content-message{
     position: fixed;
