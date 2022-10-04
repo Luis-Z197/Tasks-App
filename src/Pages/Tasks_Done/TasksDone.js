@@ -13,12 +13,15 @@ function TasksDone() {
 
     useEffect(() => {
         getTodos()
+    },[])
+
+    useEffect(() => {
         setTaskDone(todos.filter(todo => todo.status===true))
-    }, [])
+    }, [todos])
 
     useEffect(() => {
         setTotalTodos(tasks_done.length)
-    }, [todos])
+    }, [tasks_done])
     
     return (
         <>

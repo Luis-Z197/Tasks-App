@@ -92,12 +92,12 @@ function Form() {
                 </div>
                 <form method="post" onSubmit={(e)=> e.preventDefault()} >
                     <div className="c-input">
-                        <span className="label">Descripción de la tarea</span>
+                        <span className="label">Description</span>
                         <input className="input" type="text" name="description" onChange={(e) => setInputform(e.target)} 
                         value={dataForm.description} />
                     </div>
                     <div className="c-input">
-                        <span className="label">Fecha programada </span>
+                        <span className="label">Scheduled date </span>
                         <input className="input" type="date" name="date" onChange={(e) => setInputform(e.target)} 
                         value={dataForm.date} />
                     </div>

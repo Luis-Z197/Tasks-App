@@ -13,12 +13,15 @@ function PendingTasks() {
 
     useEffect(() => {
         getTodos()
+    },[])
+
+    useEffect(() => {
         setPendingTask(todos.filter(todo => todo.status===false))
-    }, [])
+    }, [todos])
 
     useEffect(() => {
         setTotalTodos(pending_tasks.length)
-    }, [todos])
+    }, [pending_tasks])
     
     return (
         <>
