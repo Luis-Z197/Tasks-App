@@ -1,11 +1,11 @@
 import './form.css';
 import { useState, useContext, useEffect } from 'react';
-import TodosContext from '../../Contexts/Todos/TodosContext';
+import TasksContext from '../../Contexts/Tasks/TasksContext';
 import FormContext from '../../Contexts/Form/FormContext';
 import Button from '../button/Button';
 function Form() {
 
-    const { getTodos, selected_todo, updateTodo, todos} = useContext(TodosContext)
+    const { getTasks, addTask, selectedTask, updateTask} = useContext(TasksContext)
     const { show, setShow, action, setAction } = useContext(FormContext)
 
     const initialState = {id:null, description:'', date:'', status:false};
@@ -14,7 +14,7 @@ function Form() {
 
     const [typeMessage, setTypeMessage] = useState(true)
 
-    const closed = () => {
+    const closedModalForm = () => {
         setAction('save')
         setShow(false)
     }
@@ -27,29 +27,13 @@ function Form() {
         setDataForm({ ...dataForm, [name]: value });
     }
 
-    const guardar = () =>{
-        setTypeMessage(true)
-        let newData=[]
-        let dataStorage = sessionStorage.getItem('todos')
-        let data = dataForm
-        if(dataStorage === null){
-            data.id = 1
-        }else{
-            newData=JSON.parse(dataStorage)
-            data.id = newData.length + 1
-        }
-        newData.push(data);
-        sessionStorage.setItem('todos', JSON.stringify(newData))
-        getTodos()
+    const save = () =>{
+        addTask(dataForm)
         message("Successfully saved")
-    }
-
-    const submit = () =>{
-        guardar()
     }
     
     const update = () =>{
-        updateTodo(todos, dataForm)
+        updateTask(dataForm)
         message("Successfully updated")
     }
     
@@ -70,11 +54,11 @@ function Form() {
     }
 
     useEffect(() => {
-      if(selected_todo != null && action==="edit"){
-        setDataForm(selected_todo)
+      if(selectedTask != null && action==="edit"){
+        setDataForm(selectedTask)
       }else{setDataForm(initialState)}
       console.log(dataForm)
-    }, [selected_todo, action])
+    }, [selectedTask, action])
     
 
     return (
@@ -87,7 +71,7 @@ function Form() {
                         <p>{action==='save'?'Register task':'Edit task'}</p>
                     </div>
                     <div>
-                        <a className='closeed' onClick={()=>closed()}><span className="material-icons">clear</span></a>
+                        <a className='closeed' onClick={()=>closedModalForm()}><span className="material-icons">clear</span></a>
                     </div>
                 </div>
                 <form method="post" onSubmit={(e)=> e.preventDefault()} >
@@ -104,7 +88,7 @@ function Form() {
                     <div className="content-button">
                     {
                         action==='save'?(
-                            <Button action = {submit} nombre="Save" type="primary"/>
+                            <Button action = {save} nombre="Save" type="primary"/>
                         ):(<Button action = {update} nombre="Update" type="secondary"/>)
                     }
                     </div>

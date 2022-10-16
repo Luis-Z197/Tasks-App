@@ -1,4 +1,4 @@
-This is a task application developed in react using sessionstorage and useContext.
+This is a task application developed in react using localStorage and useContext.
 
 For the styling of the application no css libraries or frameworks were used.
 
@@ -16,7 +16,7 @@ Options menu
 
 Form
 
-![Image text](https://github.com/Luis-Z197/TodosApp/blob/main/docs/Form.PNG)
+![Image text](https://github.com/Luis-Z197/TodosApp/blob/main/docs/form.PNG)
 
 
 

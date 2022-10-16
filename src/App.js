@@ -1,21 +1,22 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./Pages/Home/Home";
-import PendingTasks from "./Pages/Pending_Tasks/PendingTasks";
-import TasksDone from "./Pages/Tasks_Done/TasksDone";
-import TodosState from "./Contexts/Todos/TodosState";
+
+import TasksState from "./Contexts/Tasks/TasksState";
 import FormState from "./Contexts/Form/FormState";
+import Home from "./Pages/Home/Home";
+import CompletedTasks from "./Pages/CompletedTasks/CompletedTasks";
+import PendingTasks from "./Pages/PendingTasks/PendingTasks";
 
 function App() {
     return (
-        <TodosState>
+        <TasksState>
             <FormState>
             <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/done" element={<TasksDone />} />
+                <Route path="/completed" element={<CompletedTasks />} />
                 <Route path="/pending" element={<PendingTasks />} />
             </Routes>
             </FormState>
-        </TodosState>
+        </TasksState>
     );
 }
 

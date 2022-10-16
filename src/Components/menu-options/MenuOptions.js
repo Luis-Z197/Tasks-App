@@ -1,18 +1,18 @@
 import React, { useState, useContext } from 'react'
 import './menu-options.css'
-import TodosContext from '../../Contexts/Todos/TodosContext';
+import TasksContext from '../../Contexts/Tasks/TasksContext';
 import FormContext from '../../Contexts/Form/FormContext';
 
 function MenuOptions(props) {
 
-    const todo = props.todo
-    const { todos, editTodo, deleteTodo, updateStatus } = useContext(TodosContext)
+    const task = props.task
+    const { selectTask, deleteTask, updateStatus } = useContext(TasksContext)
     const { setShow, setAction, show } = useContext(FormContext)
     const [isVisible, setIsVisible] = useState(true)
 
 
-    const edit = () => {
-        editTodo(todos, todo.id)
+    const select = () => {
+        selectTask(task.id)
         setShow(true)
         setIsVisible(true)
         setAction('edit')
@@ -33,17 +33,17 @@ function MenuOptions(props) {
                         </a>
                     </div>
                     <div className="list-options">
-                        <div className="op-items done" onClick={() => { updateStatus(todos, todo.id) }}>
-                            <span className="material-icons">{todo.status ? 'task_alt' : 'radio_button_unchecked'}</span>
+                        <div className="op-items done" onClick={() => { updateStatus(task.id) }}>
+                            <span className="material-icons">{task.status ? 'task_alt' : 'radio_button_unchecked'}</span>
                         </div>
                         {
-                            !todo.status && (
-                                <div className="op-items edit" onClick={() => { edit() }}>
+                            !task.status && (
+                                <div className="op-items edit" onClick={() => { select() }}>
                                     <span className="material-icons">edit</span>
                                 </div>
                             )
                         }
-                        <div className="op-items delete" onClick={() => { deleteTodo(todos, todo.id) }}>
+                        <div className="op-items delete" onClick={() => { deleteTask(task.id) }}>
                             <span className="material-icons">delete</span>
                         </div>
                     </div>

@@ -5,28 +5,28 @@ import MenuOptions from '../menu-options/MenuOptions';
 function List(props) {
 
     const list = props.list;
-    const [todos, setTodos] = useState([])
+    const [tasks, setTasks] = useState([])
 
     useEffect(() => {
-        setTodos(list)
+        setTasks(list)
     })
 
     return (
         <div className="content-list">
             {
-                todos.map((todo) => (
+                tasks.map((task) => (
                     <div className="todo">
                         <div className="todo-details">
-                            <span className="material-icons" style={{ color: todo.status ? '#10b981' : '#757575' }}>
-                                {todo.status ? 'task_alt' : 'radio_button_unchecked'}
+                            <span className="material-icons" style={{ color: task.status ? '#10b981' : '#757575' }}>
+                                {task.status ? 'task_alt' : 'radio_button_unchecked'}
                             </span>
                             <div className="details">
                                 <p className="description">
-                                    {todo.description}
+                                    {task.description}
                                 </p>
-                                <p className="fecha">{todo.date}</p>
+                                <p className="fecha">{task.date}</p>
                             </div>
-                            <MenuOptions todo = {todo} />
+                            <MenuOptions task = {task} />
                         </div>
                     </div>
                 ))

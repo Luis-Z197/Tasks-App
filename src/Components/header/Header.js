@@ -5,7 +5,7 @@ function Header() {
     return (
       <>
         <div className="header">
-          <h1 className="title">Todos App</h1>
+          <h1 className="title">Tasks App</h1>
         </div>
         <Menu/>
       </>
