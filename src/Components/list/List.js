@@ -9,7 +9,7 @@ function List(props) {
 
     useEffect(() => {
         setTasks(list)
-    })
+    }, [list])
 
     return (
         <div className="content-list">

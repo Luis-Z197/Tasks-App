@@ -1,25 +1,25 @@
 import { useState } from "react";
 import TasksContext from "./TasksContext";
 
-function TasksState( props) {
+function TasksState(props) {
 
     const [tasks, setTasks] = useState([])
     const [selectedTask, setSelectedTask] = useState({})
-    
+
     const getTasks = () => {
         let data = localStorage.getItem('tasks');
-        let taskList = data!=null?JSON.parse(data):[]
+        let taskList = data != null ? JSON.parse(data) : []
         setTasks(taskList)
     }
 
-    const addTask = (dataForm) =>{
-        let newData=[]
+    const addTask = (dataForm) => {
+        let newData = []
         let dataStorage = localStorage.getItem('tasks')
         let data = dataForm
-        if(dataStorage === null){
+        if (dataStorage === null) {
             data.id = 1
-        }else{
-            newData=JSON.parse(dataStorage)
+        } else {
+            newData = JSON.parse(dataStorage)
             data.id = newData.length + 1
         }
         newData.push(data);
@@ -29,7 +29,7 @@ function TasksState( props) {
 
     const updateTask = (updatedTask) => {
         let updatedTasks = tasks.map((task) => {
-            if(task.id == updatedTask.id){
+            if (task.id === updatedTask.id) {
                 task.description = updatedTask.description
                 task.date = updatedTask.date
             }
@@ -47,7 +47,7 @@ function TasksState( props) {
 
     const updateStatus = (id) => {
         let updatedTasks = tasks.map((task) => {
-            if(task.id == id){
+            if (task.id === id) {
                 task.status = !task.status
             }
             return task
@@ -56,27 +56,27 @@ function TasksState( props) {
         setTasks(updatedTasks)
     }
     const selectTask = (id) => {
-        let selectedTask = tasks.find(task => task.id===id)
+        let selectedTask = tasks.find(task => task.id === id)
         setSelectedTask(selectedTask)
         console.log(selectedTask)
     }
 
-  return (
-    <TasksContext.Provider value={
-        {
-            tasks,
-            selectedTask,
-            getTasks,
-            addTask,
-            updateTask,
-            deleteTask,
-            updateStatus,
-            selectTask
-        }
-    }>
-        {props.children}
-    </TasksContext.Provider>
-  )
+    return (
+        <TasksContext.Provider value={
+            {
+                tasks,
+                selectedTask,
+                getTasks,
+                addTask,
+                updateTask,
+                deleteTask,
+                updateStatus,
+                selectTask
+            }
+        }>
+            {props.children}
+        </TasksContext.Provider>
+    )
 }
 
 export default TasksState

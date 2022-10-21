@@ -7,7 +7,7 @@ function MenuOptions(props) {
 
     const task = props.task
     const { selectTask, deleteTask, updateStatus } = useContext(TasksContext)
-    const { setShow, setAction, show } = useContext(FormContext)
+    const { setShow, setAction } = useContext(FormContext)
     const [isVisible, setIsVisible] = useState(true)
 
 
